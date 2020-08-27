@@ -12,14 +12,14 @@ import javax.annotation.PostConstruct;
 @EnableAutoConfiguration
 public class KafkaApplication {
 
-    @Autowired
-    private TestProducer product;
-    @PostConstruct
-    public void init(){
-        for(int i=0;i<10;i++){
-            product.sendTest(i);
-        }
-    }
+//    @Autowired
+//    private TestProducer product;
+//    @PostConstruct
+//    public void init(){
+//        for(int i=0;i<10;i++){
+//            product.sendTest(i);
+//        }
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(KafkaApplication.class, args);

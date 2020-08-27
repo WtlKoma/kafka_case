@@ -14,6 +14,6 @@ public class TestProducer {
 
     public void sendTest(Integer num){
         User user = new User("tyron" + num, 24, "北京大兴");
-        kafkaTemplate.send("user1", JSON.toJSONString(user));
+        kafkaTemplate.send("test1", JSON.toJSONString(user));
     }
 }
