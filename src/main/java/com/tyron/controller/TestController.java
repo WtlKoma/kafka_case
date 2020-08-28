@@ -12,7 +12,7 @@ public class TestController {
     private TestProducer producer;
 
     @GetMapping("test")
-    public String test(Integer num){
+    public String test(Integer num) throws InterruptedException {
         for (int i = 0; i < num; i++) {
             producer.sendTest(i);
         }

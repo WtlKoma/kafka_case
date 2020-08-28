@@ -1,6 +1,7 @@
 package com.tyron.consumer;
 
 import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
@@ -11,10 +12,11 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class TestConsumer {
 
-    @KafkaListener(topics = {"test1"}, groupId = "tyron")
+//    @KafkaListener(topics = {"test1"}, groupId = "tyron")
     public void testC1(List<ConsumerRecord<?, ?>> records, Acknowledgment ack) throws InterruptedException {
         for(ConsumerRecord record : records){
             Optional<Object> kafkaMassage = Optional.ofNullable(record.value());
@@ -28,7 +30,7 @@ public class TestConsumer {
         ack.acknowledge();
     }
 
-    @KafkaListener(topics = {"test1"}, groupId = "tyron")
+//    @KafkaListener(topics = {"test1"}, groupId = "tyron")
     public void testC2(List<ConsumerRecord<?, ?>> records, Acknowledgment ack) throws InterruptedException {
         for(ConsumerRecord record : records){
             Optional<Object> kafkaMassage = Optional.ofNullable(record.value());
@@ -51,9 +53,9 @@ public class TestConsumer {
                 System.out.println("testC3：" + o);
             }
         }
-        Thread.sleep(1000 * 3);
-        System.out.println("testC3===============================================");
+        Thread.sleep(1000 * 2);
         ack.acknowledge();
+        log.info("testC3提交成功===============================================");
     }
 
 }
